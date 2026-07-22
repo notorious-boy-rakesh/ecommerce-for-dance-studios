@@ -1,0 +1,17 @@
+{
+  "name": "dance-school-management-system",
+  "version": "1.0.0",
+  "description": "Full-Stack MERN Dance School Management System — Root workspace",
+  "private": true,
+  "scripts": {
+    "dev": "start \"Backend\" cmd /k \"cd /d \"%~dp0backend\" && node server.js\" && cd \"frontend\" && npm run dev",
+    "backend": "cd \"backend\" && node server.js",
+    "frontend": "cd \"frontend\" && npm run dev",
+    "install:all": "cd \"backend\" && npm install && cd \"../frontend\" && npm install",
+    "build": "cd \"frontend\" && npm run build"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ]
+}

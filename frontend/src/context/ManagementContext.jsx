@@ -1,11 +1,13 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import * as adminApi from '../api/adminApi';
+import { useAuth } from './AuthContext';
 
 const ManagementContext = createContext(null);
 
 export const useManagement = () => useContext(ManagementContext);
 
 export const ManagementProvider = ({ children }) => {
+    const { isLoggedIn, isAdminLoggedIn } = useAuth();
     // States
     const [students, setStudents] = useState([]);
     const [teachers, setTeachers] = useState([]);
@@ -51,9 +53,9 @@ export const ManagementProvider = ({ children }) => {
                     name: u.fullName,
                     email: u.email,
                     mobile: u.mobile,
-                    batchId: 'batch-evening',
-                    status: 'Active',
-                    admissionDate: u.createdAt.split('T')[0]
+                    batchId: u.batchId || 'Unassigned',
+                    status: u.status || 'Active',
+                    admissionDate: u.admissionDate || (u.createdAt ? u.createdAt.split('T')[0] : new Date().toISOString().split('T')[0])
                 }));
                 setStudents(mappedStudents);
             }
@@ -104,7 +106,7 @@ export const ManagementProvider = ({ children }) => {
 
     useEffect(() => {
         refreshFromBackend();
-    }, []);
+    }, [isLoggedIn, isAdminLoggedIn]);
 
     // CRUD Helper Functions mapped to AdminApi
     const addTeacher = async (teacher) => { try { await adminApi.createTeacher(teacher); await refreshFromBackend(); alert('Teacher added successfully!'); } catch (err) { alert('Error adding teacher'); } };

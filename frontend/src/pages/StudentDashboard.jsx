@@ -9,18 +9,18 @@ const StudentDashboard = () => {
     const { user, currentUser } = useAuth();
     const { students, batches, classes, announcements } = useManagement();
 
-    // Look up logged-in user inside student list
     const studentProfile = students.find(s => 
-        s.name.toLowerCase() === user?.toLowerCase() || 
-        s.email.toLowerCase() === user?.toLowerCase()
+        (s.name && user && s.name.toLowerCase() === user.toLowerCase()) || 
+        (s.email && currentUser?.email && s.email.toLowerCase() === currentUser.email.toLowerCase()) ||
+        (s.email && user && s.email.toLowerCase() === user.toLowerCase())
     ) || {
         id: 'DS-2026-001',
         name: user || 'STUDENT',
-        batchId: 'batch-evening',
+        batchId: 'Unassigned',
         status: 'Active'
     };
 
-    const batchName = batches.find(b => b.id === studentProfile.batchId)?.name || 'Evening Batch';
+    const batchName = batches.find(b => b.id === studentProfile.batchId)?.name || (studentProfile.batchId === 'Unassigned' ? 'Not Assigned' : 'Unknown Batch');
     const displayName = studentProfile.name.toUpperCase();
 
     return (

@@ -292,7 +292,7 @@ const deleteCertificate = async (req, res) => {
 // ─── Student CRUD (Admin Managed) ──────────────────────────────────────────────
 const addStudent = async (req, res) => {
     try {
-        const { name, email, mobile, batchId } = req.body;
+        const { name, email, mobile, batchId, status, admissionDate } = req.body;
         const username = (name.split(' ')[0] || 'student').toLowerCase() + Math.floor(Math.random()*10000);
         const User = require('../Models/User');
         const newUser = await User.create({
@@ -301,9 +301,11 @@ const addStudent = async (req, res) => {
             mobile,
             username,
             password: 'password123',
-            role: 'student'
+            role: 'student',
+            batchId: batchId || null,
+            status: status || 'Active',
+            admissionDate: admissionDate || new Date().toISOString().split('T')[0]
         });
-        // You can save batchId somewhere if you extend User schema, but for now we just create the User.
         const { sendSuccess } = require('../utils/responseFormatter');
         sendSuccess(res, newUser, 'Student created successfully');
     } catch (e) {
@@ -314,9 +316,16 @@ const addStudent = async (req, res) => {
 
 const updateStudent = async (req, res) => {
     try {
-        const { name, email, mobile } = req.body;
+        const { name, email, mobile, batchId, status, admissionDate } = req.body;
         const User = require('../Models/User');
-        const updated = await User.findByIdAndUpdate(req.params.id, { fullName: name, email, mobile }, { new: true });
+        const updated = await User.findByIdAndUpdate(req.params.id, { 
+            fullName: name, 
+            email, 
+            mobile,
+            batchId,
+            status,
+            admissionDate
+        }, { new: true });
         const { sendSuccess } = require('../utils/responseFormatter');
         sendSuccess(res, updated, 'Student updated successfully');
     } catch (e) {

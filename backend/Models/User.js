@@ -43,6 +43,17 @@ const userSchema = new mongoose.Schema(
             enum: ['student', 'admin'],
             default: 'student',
         },
+        batchId: {
+            type: String,
+            default: null,
+        },
+        status: {
+            type: String,
+            default: 'Active',
+        },
+        admissionDate: {
+            type: String,
+        },
     },
     {
         timestamps: true, // Adds createdAt and updatedAt automatically

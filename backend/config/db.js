@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { mockMongooseLocally } = require('./mockMongoose');
 
 const connectDB = async () => {
     try {
@@ -14,17 +13,9 @@ const connectDB = async () => {
             console.log(`✅ MongoDB Connected Successful`);
             return;
         } catch (e) {
-            // Else connect it (to fallback) and make the connection visible
             console.log(`❌ Atlas Connection Failed: ${e.message}`);
-            
-            // Fast-fail real mongoose connection to prevent timeout
-            mongoose.connect('mongodb://127.0.0.1:27017/dummy', { serverSelectionTimeoutMS: 10 }).catch(() => {});
-            
-            // Inject persistent local JSON DB fallback that perfectly mimics MongoDB
-            mockMongooseLocally();
-            
-            // Output the required success message 
-            console.log(`✅ MongoDB Connected Successful (Local Persistent Engine)`);
+            // Strict mode: no local fallback allowed. Fail if MongoDB doesn't connect.
+            throw e;
         }
 
     } catch (error) {

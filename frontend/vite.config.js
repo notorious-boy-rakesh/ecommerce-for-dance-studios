@@ -9,7 +9,7 @@ export default defineConfig({
       // All /api requests from Vite dev server are proxied to the backend
       // This eliminates CORS issues during development
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://ecommerce-for-dance-studios.onrender.com',
         changeOrigin: true,
         secure: false,
       },

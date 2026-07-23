@@ -7,8 +7,8 @@ import axios from 'axios';
  * - Auto-clears auth state and redirects to /login on 401
  */
 const axiosInstance = axios.create({
-    // If VITE_API_URL exists, use it. Otherwise, fallback to '/api' for local development.
-    baseURL: import.meta.env.VITE_API_URL || '/api',
+    // Use VITE_API_URL if provided. Otherwise, use the Render URL in production, or '/api' in local development.
+    baseURL: import.meta.env.VITE_API_URL || (import.meta.env.PROD ? 'https://ecommerce-for-dance-studios.onrender.com/api' : '/api'),
     timeout: 10000,
     headers: {
         'Content-Type': 'application/json',

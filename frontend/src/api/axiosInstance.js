@@ -7,7 +7,7 @@ import axios from 'axios';
  * - Auto-clears auth state and redirects to /login on 401
  */
 const axiosInstance = axios.create({
-    // If VITE_API_URL exists (in Render), use it. Otherwise, fallback to '/api' for local development.
+    // If VITE_API_URL exists, use it. Otherwise, fallback to '/api' for local development.
     baseURL: import.meta.env.VITE_API_URL || '/api',
     timeout: 10000,
     headers: {

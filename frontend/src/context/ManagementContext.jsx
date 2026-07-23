@@ -6,85 +6,22 @@ const ManagementContext = createContext(null);
 
 export const useManagement = () => useContext(ManagementContext);
 
-const sampleStudents = [
-    { id: 'ST-001', name: 'Aarav Patel', email: 'aarav@example.com', mobile: '9876543210', batchId: 'b-01', status: 'Active', admissionDate: '2026-01-10' },
-    { id: 'ST-002', name: 'Priya Sharma', email: 'priya@example.com', mobile: '8765432109', batchId: 'b-02', status: 'Active', admissionDate: '2026-02-15' }
-];
-
-const sampleTeachers = [
-    { id: 'T-001', name: 'Nataraj Iyer', email: 'nataraj@example.com', mobile: '7654321098', specialization: 'Bharatanatyam', experience: '15 Years', bio: 'Renowned classical dancer.' },
-    { id: 'T-002', name: 'Simran Kaur', email: 'simran@example.com', mobile: '6543210987', specialization: 'Contemporary', experience: '8 Years', bio: 'Expert in modern contemporary styles.' }
-];
-
-const sampleClasses = [
-    { id: 'C-001', name: 'Bharatanatyam Basics', desc: 'Introduction to foundational steps.', img: '/images/bharatanatyam_class.png', trainer: 'Nataraj Iyer', timing: 'Morning 7 AM - 9 AM' },
-    { id: 'C-002', name: 'Contemporary Fusion', desc: 'Mix of classical and modern moves.', img: '/images/contemporary_class.png', trainer: 'Simran Kaur', timing: 'Evening 5 PM - 7 PM' }
-];
-
-const sampleBatches = [
-    { id: 'b-01', name: 'Morning Glory (7 AM)', timing: '7:00 AM - 9:00 AM' },
-    { id: 'b-02', name: 'Evening Stars (5 PM)', timing: '5:00 PM - 7:00 PM' }
-];
-
-const sampleTimetable = [
-    { id: 'tt-1', type: 'Bharatanatyam', trainer: 'Nataraj Iyer', day: 'Monday', dayClass: 'Beginners', time: '7:00 AM - 9:00 AM' },
-    { id: 'tt-2', type: 'Contemporary', trainer: 'Simran Kaur', day: 'Tuesday', dayClass: 'Intermediate', time: '5:00 PM - 7:00 PM' }
-];
-
-const sampleAnnouncements = [
-    { id: 'A-001', text: 'Annual dance showcase auditions starting next week!', date: '2026-07-20' },
-    { id: 'A-002', text: 'Studio will be closed on Friday for maintenance.', date: '2026-07-22' }
-];
-
-const sampleEvents = [
-    { id: 'E-001', name: 'Summer Dance Festival', date: '2026-08-15', time: '6:00 PM', venue: 'City Auditorium', description: 'Annual performance showcasing all batches.', performanceSchedule: '6:00 PM - Invoc, 7:00 PM - Contemp' }
-];
-
-const sampleGallery = [
-    { id: 'G-001', album: 'Stage Performances', url: '/images/stage_performance.png', title: 'Solo Act' },
-    { id: 'G-002', album: 'Practice Sessions', url: '/images/practice_session.png', title: 'Group Rehearsal' }
-];
-
-const sampleAttendance = [
-    { id: 'ATT-1', date: new Date().toISOString().split('T')[0], studentId: 'ST-001', className: 'Bharatanatyam Basics', status: 'Present' },
-    { id: 'ATT-2', date: new Date().toISOString().split('T')[0], studentId: 'ST-002', className: 'Contemporary Fusion', status: 'Absent' }
-];
-
-const sampleFees = [
-    { id: 'F-001', studentName: 'Aarav Patel', amount: 2000, dueDate: '2026-07-01', status: 'Paid', payDate: '2026-07-02' },
-    { id: 'F-002', studentName: 'Priya Sharma', amount: 2500, dueDate: '2026-07-05', status: 'Pending', payDate: '' }
-];
-
-const sampleAdmissions = [
-    { id: 'AD-001', name: 'Rohan Gupta', email: 'rohan@example.com', mobile: '9988776655', course: 'Bharatanatyam', status: 'Pending', date: '2026-07-21' },
-    { id: 'AD-002', name: 'Neha Singh', email: 'neha@example.com', mobile: '8877665544', course: 'Contemporary', status: 'Approved', date: '2026-07-15' }
-];
-
-const sampleCertificates = [
-    { id: 'CERT-001', studentName: 'Aarav Patel', courseName: 'Bharatanatyam Basics', issueDate: '2026-06-30', certificateNo: 'CERT-BH-0001' }
-];
-
-const sampleMessages = [
-    { id: 'M-001', name: 'Vikram', email: 'vikram@example.com', subject: 'Class timings', message: 'Hi, what are the timings for weekend batches?', status: 'Unread', date: '2026-07-22' },
-    { id: 'M-002', name: 'Sneha', email: 'sneha@example.com', subject: 'Fee structure', message: 'Could you please send the fee structure for contemporary dance?', status: 'Read', date: '2026-07-20' }
-];
-
 export const ManagementProvider = ({ children }) => {
     const { isLoggedIn, isAdminLoggedIn } = useAuth();
     // States
-    const [students, setStudents] = useState(sampleStudents);
-    const [teachers, setTeachers] = useState(sampleTeachers);
-    const [classes, setClasses] = useState(sampleClasses);
-    const [batches, setBatches] = useState(sampleBatches);
-    const [timetable, setTimetable] = useState(sampleTimetable);
-    const [announcements, setAnnouncements] = useState(sampleAnnouncements);
-    const [events, setEvents] = useState(sampleEvents);
-    const [gallery, setGallery] = useState(sampleGallery);
-    const [attendance, setAttendance] = useState(sampleAttendance);
-    const [fees, setFees] = useState(sampleFees);
-    const [admissions, setAdmissions] = useState(sampleAdmissions);
-    const [certificates, setCertificates] = useState(sampleCertificates);
-    const [messages, setMessages] = useState(sampleMessages);
+    const [students, setStudents] = useState([]);
+    const [teachers, setTeachers] = useState([]);
+    const [classes, setClasses] = useState([]);
+    const [batches, setBatches] = useState([]);
+    const [timetable, setTimetable] = useState([]);
+    const [announcements, setAnnouncements] = useState([]);
+    const [events, setEvents] = useState([]);
+    const [gallery, setGallery] = useState([]);
+    const [attendance, setAttendance] = useState([]);
+    const [fees, setFees] = useState([]);
+    const [admissions, setAdmissions] = useState([]);
+    const [certificates, setCertificates] = useState([]);
+    const [messages, setMessages] = useState([]);
 
     const refreshFromBackend = async () => {
         try {
@@ -120,8 +57,8 @@ export const ManagementProvider = ({ children }) => {
                     status: u.status || 'Active',
                     admissionDate: u.admissionDate || (u.createdAt ? u.createdAt.split('T')[0] : new Date().toISOString().split('T')[0])
                 }));
-                setStudents([...sampleStudents, ...mappedStudents]);
-            } else { setStudents(sampleStudents); }
+                setStudents(mappedStudents);
+            }
 
             if (liveEnquiries.success) {
                 const mappedAdmissions = liveEnquiries.data.map(e => ({
@@ -134,8 +71,8 @@ export const ManagementProvider = ({ children }) => {
                     date: e.createdAt.split('T')[0],
                     rawStatus: e.status
                 }));
-                setAdmissions([...sampleAdmissions, ...mappedAdmissions]);
-            } else { setAdmissions(sampleAdmissions); }
+                setAdmissions(mappedAdmissions);
+            }
 
             if (liveContacts.success) {
                 const mappedMessages = liveContacts.data.map(c => ({
@@ -148,19 +85,19 @@ export const ManagementProvider = ({ children }) => {
                     date: c.createdAt.split('T')[0],
                     rawStatus: c.status
                 }));
-                setMessages([...sampleMessages, ...mappedMessages]);
-            } else { setMessages(sampleMessages); }
+                setMessages(mappedMessages);
+            }
 
-            if (liveTeachers.success) setTeachers([...sampleTeachers, ...liveTeachers.data.map(d => ({ ...d, id: d._id }))]); else setTeachers(sampleTeachers);
-            if (liveClasses.success) setClasses([...sampleClasses, ...liveClasses.data.map(d => ({ ...d, id: d._id }))]); else setClasses(sampleClasses);
-            if (liveBatches.success) setBatches([...sampleBatches, ...liveBatches.data.map(d => ({ ...d, id: d._id }))]); else setBatches(sampleBatches);
-            if (liveTimetable.success) setTimetable([...sampleTimetable, ...liveTimetable.data.map(d => ({ ...d, id: d._id }))]); else setTimetable(sampleTimetable);
-            if (liveAnnouncements.success) setAnnouncements([...sampleAnnouncements, ...liveAnnouncements.data.map(d => ({ ...d, id: d._id }))]); else setAnnouncements(sampleAnnouncements);
-            if (liveEvents.success) setEvents([...sampleEvents, ...liveEvents.data.map(d => ({ ...d, id: d._id }))]); else setEvents(sampleEvents);
-            if (liveGallery.success) setGallery([...sampleGallery, ...liveGallery.data.map(d => ({ ...d, id: d._id }))]); else setGallery(sampleGallery);
-            if (liveAttendance.success) setAttendance([...sampleAttendance, ...liveAttendance.data.map(d => ({ ...d, id: d._id }))]); else setAttendance(sampleAttendance);
-            if (liveFees.success) setFees([...sampleFees, ...liveFees.data.map(d => ({ ...d, id: d._id }))]); else setFees(sampleFees);
-            if (liveCertificates.success) setCertificates([...sampleCertificates, ...liveCertificates.data.map(d => ({ ...d, id: d._id }))]); else setCertificates(sampleCertificates);
+            if (liveTeachers.success) setTeachers(liveTeachers.data.map(d => ({ ...d, id: d._id })));
+            if (liveClasses.success) setClasses(liveClasses.data.map(d => ({ ...d, id: d._id })));
+            if (liveBatches.success) setBatches(liveBatches.data.map(d => ({ ...d, id: d._id })));
+            if (liveTimetable.success) setTimetable(liveTimetable.data.map(d => ({ ...d, id: d._id })));
+            if (liveAnnouncements.success) setAnnouncements(liveAnnouncements.data.map(d => ({ ...d, id: d._id })));
+            if (liveEvents.success) setEvents(liveEvents.data.map(d => ({ ...d, id: d._id })));
+            if (liveGallery.success) setGallery(liveGallery.data.map(d => ({ ...d, id: d._id })));
+            if (liveAttendance.success) setAttendance(liveAttendance.data.map(d => ({ ...d, id: d._id })));
+            if (liveFees.success) setFees(liveFees.data.map(d => ({ ...d, id: d._id })));
+            if (liveCertificates.success) setCertificates(liveCertificates.data.map(d => ({ ...d, id: d._id })));
 
         } catch (error) {
             console.error('Failed to sync with live backend:', error);

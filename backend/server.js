@@ -21,11 +21,17 @@ app.use(
             if (!origin) return callback(null, true);
             
             if (process.env.NODE_ENV === 'production') {
+                const cleanOrigin = origin.endsWith('/') ? origin.slice(0, -1) : origin;
                 const allowedOrigins = process.env.CLIENT_URL 
-                    ? process.env.CLIENT_URL.split(',').map(url => url.trim()) 
-                    : ['http://localhost:5173'];
+                    ? process.env.CLIENT_URL.split(',').map(url => {
+                        let trimmed = url.trim();
+                        return trimmed.endsWith('/') ? trimmed.slice(0, -1) : trimmed;
+                      }) 
+                    : [];
+                allowedOrigins.push('http://localhost:5173');
+                allowedOrigins.push('https://ecommerce-for-dance-studios-fronten.vercel.app');
                 
-                if (allowedOrigins.includes(origin)) {
+                if (allowedOrigins.includes(cleanOrigin)) {
                     callback(null, true);
                 } else {
                     callback(new Error('Not allowed by CORS'));

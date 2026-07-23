@@ -17,8 +17,8 @@ const sampleTeachers = [
 ];
 
 const sampleClasses = [
-    { id: 'C-001', name: 'Bharatanatyam Basics', desc: 'Introduction to foundational steps.', img: 'https://images.unsplash.com/photo-1546413280-928925f492b4?w=400&h=300&fit=crop', trainer: 'Nataraj Iyer', timing: 'Morning 7 AM - 9 AM' },
-    { id: 'C-002', name: 'Contemporary Fusion', desc: 'Mix of classical and modern moves.', img: 'https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?w=400&h=300&fit=crop', trainer: 'Simran Kaur', timing: 'Evening 5 PM - 7 PM' }
+    { id: 'C-001', name: 'Bharatanatyam Basics', desc: 'Introduction to foundational steps.', img: 'https://picsum.photos/seed/dance1/400/300', trainer: 'Nataraj Iyer', timing: 'Morning 7 AM - 9 AM' },
+    { id: 'C-002', name: 'Contemporary Fusion', desc: 'Mix of classical and modern moves.', img: 'https://picsum.photos/seed/dance2/400/300', trainer: 'Simran Kaur', timing: 'Evening 5 PM - 7 PM' }
 ];
 
 const sampleBatches = [
@@ -41,8 +41,8 @@ const sampleEvents = [
 ];
 
 const sampleGallery = [
-    { id: 'G-001', album: 'Stage Performances', url: 'https://images.unsplash.com/photo-1516478952875-10336d3daea0?w=400&h=300&fit=crop', title: 'Solo Act' },
-    { id: 'G-002', album: 'Practice Sessions', url: 'https://images.unsplash.com/photo-1547153760-18fc86324498?w=400&h=300&fit=crop', title: 'Group Rehearsal' }
+    { id: 'G-001', album: 'Stage Performances', url: 'https://picsum.photos/seed/stage1/400/300', title: 'Solo Act' },
+    { id: 'G-002', album: 'Practice Sessions', url: 'https://picsum.photos/seed/practice2/400/300', title: 'Group Rehearsal' }
 ];
 
 const sampleAttendance = [

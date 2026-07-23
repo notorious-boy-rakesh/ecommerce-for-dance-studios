@@ -85,13 +85,13 @@ const AdminDashboard = () => {
             if (activeTab === 'students') {
                 setFormInputs({ name: '', email: '', mobile: '', batchId: 'batch-evening' });
             } else if (activeTab === 'teachers') {
-                setFormInputs({ name: '', email: '', mobile: '', specialization: '', experience: '', bio: '' });
+                setFormInputs({ name: '', email: '', mobile: '', specialization: '', experience: '', bio: '', img: '' });
             } else if (activeTab === 'classes') {
                 setFormInputs({ name: '', desc: '', img: '', trainer: '', timing: '' });
             } else if (activeTab === 'batches') {
                 setFormInputs({ name: '', timing: '' });
             } else if (activeTab === 'events') {
-                setFormInputs({ name: '', date: '', time: '', venue: '', description: '', performanceSchedule: '' });
+                setFormInputs({ name: '', date: '', time: '', venue: '', description: '', performanceSchedule: '', img: '' });
             } else if (activeTab === 'timetable') {
                 setFormInputs({ type: 'Bharatanatyam', trainer: 'Ms. Priya', day: 'Monday', dayClass: 'General', time: '9:00 AM - 10:00 AM' });
             } else if (activeTab === 'announcements') {
@@ -1477,6 +1477,15 @@ const AdminDashboard = () => {
                                                 required 
                                             />
                                         </div>
+                                        <div className="admin-form-group">
+                                            <label>Profile Image URL (Optional)</label>
+                                            <input 
+                                                type="url" 
+                                                placeholder="https://example.com/photo.jpg"
+                                                value={formInputs.img || ''} 
+                                                onChange={e => setFormInputs({ ...formInputs, img: e.target.value })} 
+                                            />
+                                        </div>
                                         <div className="form-row">
                                             <div className="admin-form-group">
                                                 <label>Email</label>
@@ -1617,6 +1626,15 @@ const AdminDashboard = () => {
                                                 value={formInputs.name || ''} 
                                                 onChange={e => setFormInputs({ ...formInputs, name: e.target.value })} 
                                                 required 
+                                            />
+                                        </div>
+                                        <div className="admin-form-group">
+                                            <label>Banner Image URL (Optional)</label>
+                                            <input 
+                                                type="url" 
+                                                placeholder="https://example.com/banner.jpg"
+                                                value={formInputs.img || ''} 
+                                                onChange={e => setFormInputs({ ...formInputs, img: e.target.value })} 
                                             />
                                         </div>
                                         <div className="form-row">

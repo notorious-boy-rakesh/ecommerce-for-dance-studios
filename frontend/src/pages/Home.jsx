@@ -79,7 +79,12 @@ const Home = () => {
                     >
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
                             {events.map((ev, idx) => (
-                                <div key={idx} style={{ padding: '16px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', border: '1px solid var(--glass-border)' }}>
+                                <div key={idx} style={{ padding: '16px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', border: '1px solid var(--glass-border)', overflow: 'hidden' }}>
+                                    {ev.img && (
+                                        <div style={{ margin: '-16px -16px 16px -16px', height: '160px' }}>
+                                            <img src={ev.img} alt={ev.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                        </div>
+                                    )}
                                     <h3 style={{ margin: '0 0 8px 0', color: '#fff', fontSize: '1.2rem' }}>{ev.name}</h3>
                                     <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '4px' }}><strong>📅 Date:</strong> {ev.date} at {ev.time}</div>
                                     <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '12px' }}><strong>📍 Venue:</strong> {ev.venue}</div>

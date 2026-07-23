@@ -72,8 +72,12 @@ const About = () => {
                         {teachers.map((teacher, idx) => (
                             <GlassCard key={idx} style={{ animation: 'none', display: 'flex', flexDirection: 'column' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
-                                    <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', marginRight: '16px', color: '#fff' }}>
-                                        {teacher.name.charAt(0).toUpperCase()}
+                                    <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', marginRight: '16px', color: '#fff', overflow: 'hidden' }}>
+                                        {teacher.img ? (
+                                            <img src={teacher.img} alt={teacher.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                        ) : (
+                                            teacher.name.charAt(0).toUpperCase()
+                                        )}
                                     </div>
                                     <div>
                                         <h3 style={{ margin: 0, color: '#fff', fontSize: '1.2rem' }}>{teacher.name}</h3>

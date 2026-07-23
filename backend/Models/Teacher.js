@@ -5,6 +5,7 @@ const teacherSchema = new mongoose.Schema({
     mobile: { type: String, required: true },
     specialization: { type: String, required: true },
     experience: { type: String, required: true },
-    bio: { type: String, required: true }
+    bio: { type: String, required: true },
+    img: { type: String, required: false }
 }, { timestamps: true });
 module.exports = mongoose.model('Teacher', teacherSchema);

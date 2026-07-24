@@ -292,11 +292,12 @@ const deleteCertificate = async (req, res) => {
 // ─── Student CRUD (Admin Managed) ──────────────────────────────────────────────
 const addStudent = async (req, res) => {
     try {
-        const { name, email, mobile, batchId, status, admissionDate } = req.body;
-        const username = (name.split(' ')[0] || 'student').toLowerCase() + Math.floor(Math.random()*10000);
+        const studentName = req.body.name || req.body.fullName || 'Unknown Student';
+        const { email, mobile, batchId, status, admissionDate } = req.body;
+        const username = (studentName.split(' ')[0] || 'student').toLowerCase() + Math.floor(Math.random()*10000);
         const User = require('../Models/User');
         const newUser = await User.create({
-            fullName: name,
+            fullName: studentName,
             email,
             mobile,
             username,
@@ -316,10 +317,11 @@ const addStudent = async (req, res) => {
 
 const updateStudent = async (req, res) => {
     try {
-        const { name, email, mobile, batchId, status, admissionDate } = req.body;
+        const studentName = req.body.name || req.body.fullName;
+        const { email, mobile, batchId, status, admissionDate } = req.body;
         const User = require('../Models/User');
         const updated = await User.findByIdAndUpdate(req.params.id, { 
-            fullName: name, 
+            fullName: studentName, 
             email, 
             mobile,
             batchId,

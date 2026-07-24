@@ -47,7 +47,7 @@ app.use(
             }
         },
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-        allowedHeaders: ['Content-Type', 'Authorization'],
+        allowedHeaders: ['Content-Type', 'Authorization', 'x-admin-secret'],
         credentials: true,
     })
 );

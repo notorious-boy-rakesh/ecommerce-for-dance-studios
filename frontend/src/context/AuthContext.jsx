@@ -119,7 +119,7 @@ export const AuthProvider = ({ children }) => {
 
     // ─── adminLogin: kept as frontend-only (no admin backend model) ───────────
     const adminLogin = useCallback((username, password) => {
-        if (username === 'admin' && password === 'Admin@123') {
+        if (username === 'admin' && password === 'admin123') {
             localStorage.setItem('isAdminLoggedIn', 'true');
             setIsAdminLoggedIn(true);
             return { success: true };

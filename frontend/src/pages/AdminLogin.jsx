@@ -106,6 +106,11 @@ const AdminLogin = () => {
                     </div>
                 </form>
 
+                <div style={{ textAlign: 'center', marginTop: '15px', fontSize: '0.9rem', color: '#666' }}>
+                    <p style={{ margin: '5px 0' }}>Admin ID: <strong>admin</strong></p>
+                    <p style={{ margin: '5px 0' }}>Password: <strong>admin123</strong></p>
+                </div>
+
                 <div className="divider"></div>
 
                 <p className="auth-link">Not an Administrator? <Link to="/login">Student Login</Link></p>
